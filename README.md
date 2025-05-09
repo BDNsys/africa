@@ -9,7 +9,7 @@ This is a Django boilerplate project created by our team for rapid development. 
 
 ```bash
 git clone git@github.com:BDNsys/africa.git
-cd boilerplate
+cd africa
 ````
 
 ### 2. Create a Virtual Environment
