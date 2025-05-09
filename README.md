@@ -8,7 +8,7 @@ This is a Django boilerplate project created by our team for rapid development. 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/nazrawigedion123/boilerplate.git
+git clone git@github.com:BDNsys/africa.git
 cd boilerplate
 ````
 
