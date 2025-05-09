@@ -1,16 +1,39 @@
-{% extends "base.html" %}
-{% block content %}
-
+{% extends "base.html" %} {% block content %} {% load static %}
 <section class="hero">
-    <div class="hero-content">
-      <h1>Build Your Dream Website</h1>
-      <p>Create stunning, responsive websites with ease.</p>
-      <a href="#" class="hero-btn">Get Started Now</a>
+  <div class="hero-content">
+    <h1>Build Your Dream Website</h1>
+    <p>Create stunning, responsive websites with ease.</p>
+    <a href="#" class="hero-btn">Get Started Now</a>
+  </div>
+</section>
+
+<section class="card-section">
+  <div class="card-container">
+    <div class="card">
+      <img src="{% static 'image/card1.png' %}" alt="Card Image" />
+      <h3>Creative Design</h3>
+      <p>Discover stunning designs and layouts for your next project.</p>
+      <a href="#" class="card-btn">Read More</a>
     </div>
-  </section>
-  
-
-
-
+    <div class="card">
+      <img src="{% static 'image/card2.png' %}" alt="Card Image" />
+      <h3>Modern Tools</h3>
+      <p>Utilize cutting-edge tools to build your dream product faster.</p>
+      <a href="#" class="card-btn">Read More</a>
+    </div>
+    <div class="card">
+      <img src="{% static 'image/card3.png' %}" alt="Card Image" />
+      <h3>Fast Performance</h3>
+      <p>Speed and optimization are at the core of everything we do.</p>
+      <a href="#" class="card-btn">Read More</a>
+    </div>
+    <div class="card">
+      <img src="{% static 'image/card4.png' %}" alt="Card Image" />
+      <h3>Reliable Support</h3>
+      <p>We’re here for you anytime with fast, friendly customer service.</p>
+      <a href="#" class="card-btn">Read More</a>
+    </div>
+  </div>
+</section>
 
 {% endblock %}
