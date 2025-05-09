@@ -50,7 +50,7 @@ Visit `http://127.0.0.1:8000/` in your browser.
 ## 🗂 Project Structure
 
 ```
-boilerplate/
+africa/
 ├── africa/         # Main Django app
 ├── static/         # Static files (CSS, JS, etc.)
 ├── templates/      # HTML templates
