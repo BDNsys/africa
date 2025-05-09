@@ -1,0 +1,51 @@
+{% load static %} {# Load static files tag library #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {# Ensures compatibility with older IE versions #}
+
+    <title>{% block title %}Africa Django App{% endblock %}</title> {# Title block to be overridden by child templates #}
+
+    {# Favicon - add your favicon.ico to your static files #}
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    {# Stylesheets #}
+    {# Consider using a CSS framework like Bootstrap or Tailwind CSS, or write your own #}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"> {# Base styles for the whole site #}
+    {% block extra_css %}{% endblock %} {# Block for including extra CSS files from child templates #}
+
+    {# Preconnect to domains for external resources if you use CDNs #}
+    {# <link rel="preconnect" href="https://stackpath.bootstrapcdn.com"> #}
+    {# <link rel="preconnect" href="https://cdnjs.cloudflare.com"> #}
+
+    {% block head_scripts %}{% endblock %} {# Block for scripts needed in the head (use with caution) #}
+</head>
+<body>
+
+    {# Optional: Header section #}
+    <header>
+        <h1>header</h1>
+    </header>
+
+    {# Main content block - this is where the content of child templates will go #}
+    <main id="content">
+        {% block content %}
+            {# Default content or a placeholder #}
+        {% endblock %}
+    </main>
+
+    {# Optional: Footer section #}
+    <footer>
+        <h1> footer </h1>
+    </footer>
+
+    {# JavaScript files #}
+    {# Place scripts at the end of the body for better performance (allows the HTML to load first) #}
+    <script src="{% static 'js/base.js' %}"></script> {# Base JavaScript for the whole site #}
+    {% block extra_js %}{% endblock %} {# Block for including extra JS files from child templates #}
+
+</body>
+</html>
