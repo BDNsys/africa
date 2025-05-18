@@ -23,26 +23,37 @@
     </div>
 
     <!-- Profile Form -->
-    <form method="POST" enctype="multipart/form-data" class="profile-form" id="profileForm">
-      {% csrf_token %}
-      {% for field in form %}
-        <div class="form-group" style="display: flex; align-items: center;">
-          <label for="{{ field.id_for_label }}" style="flex: 1;">{{ field.label }}</label>
-          
-          {% if field.name == "avatar" %}
-            {{ field.as_widget(attrs={'disabled': 'disabled', 'id': field.auto_id}) }}
-          {% else %}
-            {{ field.as_widget(attrs={'disabled': 'disabled', 'id': field.auto_id}) }}
-          {% endif %}
-          
-          <button type="button" class="edit-btn" data-field-id="{{ field.auto_id }}" style="margin-left: 10px;">
-            Edit
-          </button>
-          {{ field.errors }}
-        </div>
-      {% endfor %}
-      <button type="submit" class="btn-submit" id="saveBtn" style="display:none; margin-top: 20px;">Save Changes</button>
-    </form>
+   <form method="POST" enctype="multipart/form-data" class="profile-form" id="profileForm">
+  {% csrf_token %}
+  {% for field in form %}
+    <div class="form-group" style="display: flex; align-items: center;">
+      <label for="{{ field.id_for_label }}" style="flex: 1;">{{ field.label }}</label>
+      {{ field }}
+      <button type="button" class="edit-btn" data-field-id="{{ field.auto_id }}" style="margin-left: 10px;">
+        Edit
+      </button>
+      {{ field.errors }}
+    </div>
+  {% endfor %}
+  <button type="submit" class="btn-submit" style="display:none;">Save Changes</button>
+</form>
+
+<script>
+  const editButtons = document.querySelectorAll('.edit-btn');
+  const saveBtn = document.querySelector('.btn-submit');
+
+  editButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const fieldId = btn.getAttribute('data-field-id');
+      const input = document.getElementById(fieldId);
+      if (input) {
+        input.disabled = false;
+        saveBtn.style.display = 'block';
+        btn.style.display = 'none';
+      }
+    });
+  });
+</script>
 
     <!-- Bottom Actions -->
     <div class="bottom-actions" style="margin-top: 20px;">
