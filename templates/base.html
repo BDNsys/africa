@@ -156,27 +156,36 @@
 <body>
 
     {# Optional: Header section #}
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-              <img src="images/logo.png" alt="Logo">
-            </div>
-            <ul class="nav-links">
-              <li><a href="#">Home</a></li>
-              <li class="dropdown">
+ <header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'homepage' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li class="dropdown">
                 <a href="#">Services</a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Web Design</a></li>
-                  <li><a href="#">SEO</a></li>
-                  <li><a href="#">Marketing</a></li>
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">SEO</a></li>
+                    <li><a href="#">Marketing</a></li>
                 </ul>
-              </li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-            <a href="#" class="cta-button">Get Started</a>
-          </nav>
-    </header>
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+        <a href="#" class="cta-button">Get Started</a>
+    </nav>
+</header>
+
 
     {# Main content block - this is where the content of child templates will go #}
     <main id="content">

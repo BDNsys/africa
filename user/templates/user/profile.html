@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>Update Profile</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    {% if user.avatar %}
+        <img src="{{ user.avatar.url }}" alt="Avatar" width="100" />
+    {% endif %}
+
+    <button type="submit">Update</button>
+</form>
+
+<hr>
+<a href="{% url 'update-password' %}">
+    <button>Update Password</button>
+</a>
+{% endblock %}
