@@ -21,6 +21,12 @@ class ProfileUpdateForm(forms.ModelForm):
         for field_name in self.fields:
             self.fields[field_name].widget.attrs['disabled'] = 'disabled'
 
+    def clean_email(self):
+        # Avoid duplicate emails (except for current user)
+        email = self.cleaned_data.get('email')
+        if CustomUser.objects.exclude(pk=self.instance.pk).filter(email=email).exists():
+            raise forms.ValidationError("This email is already in use.")
+        return email
        
 
 class CustomPasswordChangeForm(PasswordChangeForm):
