@@ -1,13 +1,27 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
 <div class="auth-container">
-  <h2>Login</h2>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
-  <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a>.</p>
+  <div class="auth-box">
+    <h2 class="auth-title">Login</h2>
+    <form method="POST" class="auth-form">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      {% for field in form %}
+        <div class="auth-field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {{ field.errors }}
+        </div>
+      {% endfor %}
+      <button type="submit" class="auth-btn">Login</button>
+    </form>
+    <p class="auth-text">Don't have an account?
+      <a href="{% url 'signup' %}" class="auth-link">Sign up here</a>.
+    </p>
+  </div>
 </div>
 {% endblock %}
