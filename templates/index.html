@@ -1,11 +1,41 @@
 {% extends "base.html" %} {% block content %} {% load static %}
 <section class="hero">
-  <div class="hero-content">
-    <h1>Build Your Dream Website</h1>
-    <p>Create stunning, responsive websites with ease.</p>
-    <a href="#" class="hero-btn">Get Started Now</a>
+  <div class="hero-slider">
+    <div class="hero-slide hero-active">
+      <img src="{% static 'image/slide1.jpg' %}" alt="Slide 1">
+      <div class="hero-content">
+        <h1>Build Your Dream Website</h1>
+        <p>Create stunning, responsive websites with ease.</p>
+        <a href="#" class="hero-btn">See More</a>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <img src="{% static 'image/slide2.jpg' %}" alt="Slide 2">
+      <div class="hero-content">
+        <h1>Fast Performance</h1>
+        <p>Deliver a lightning-fast user experience.</p>
+        <a href="#" class="hero-btn">See More</a>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <img src="{% static 'image/slide3.jpg' %}" alt="Slide 3">
+      <div class="hero-content">
+        <h1>Design That Inspires</h1>
+        <p>Visually impactful and modern layouts.</p>
+        <a href="#" class="hero-btn">See More</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-controls">
+    <span class="material-icons hero-prev-btn">chevron_left</span>
+    <span class="material-icons hero-next-btn">chevron_right</span>
   </div>
 </section>
+
+<script src="{% static 'js/hero-slider.js' %}"></script>
+
+        <!-- card section -->
 
 <section class="card-section">
   <div class="card-container">
