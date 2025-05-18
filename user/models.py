@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.validators import RegexValidator
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 # Create your models here.
 class CustomUserManager(BaseUserManager):
@@ -31,6 +32,14 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     is_staff=models.BooleanField(default=False)
     date_joined=models.DateTimeField(default=timezone.now)
     objects=CustomUserManager()
+    phone = models.CharField(
+        max_length=15,
+        validators=[RegexValidator(r'^\+?\d{9,15}$')],
+        unique=True,
+        null=True,
+        blank=True,
+        help_text="Enter phone number in format: +251912345678"
+    )
 
     USERNAME_FIELD ='email'
     REQUIRED_FIELDS =['full_name']

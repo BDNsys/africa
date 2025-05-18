@@ -6,7 +6,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model=CustomUser
-        fields=('email','full_name')
+        fields=('email','full_name','phone', 'password1', 'password2')
 class CustomAuthenticationForm(AuthenticationForm):
     username= forms.EmailField(label="Email")
 
@@ -14,7 +14,7 @@ class CustomAuthenticationForm(AuthenticationForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['full_name', 'email','avatar']
+        fields = ['full_name', 'email','avatar','phone']
 
 class CustomPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(label="Old password", widget=forms.PasswordInput)
