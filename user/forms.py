@@ -21,6 +21,8 @@ class ProfileUpdateForm(forms.ModelForm):
         for field_name in self.fields:
             self.fields[field_name].widget.attrs['disabled'] = 'disabled'
 
+       
+
 class CustomPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(label="Old password", widget=forms.PasswordInput)
     new_password1 = forms.CharField(label="New password", widget=forms.PasswordInput)
