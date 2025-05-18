@@ -2,253 +2,248 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    {# Ensures compatibility with older IE versions #}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {# Ensures compatibility with older IE versions #}
 
-    <title>{% block title %}Africa Django App{% endblock %}</title>
-    {# Title block to be overridden by child templates #} {# Favicon - add your
-    favicon.ico to your static files #}
-    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
+    <title>{% block title %}Africa Django App{% endblock %}</title> {# Title block to be overridden by child templates #}
 
-    {# Stylesheets #} {# Consider using a CSS framework like Bootstrap or
-    Tailwind CSS, or write your own #}
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    {# Base styles for the whole site #} {% block extra_css %}{% endblock %} {#
-    Block for including extra CSS files from child templates #} {# Preconnect to
-    domains for external resources if you use CDNs #} {#
-    <link rel="preconnect" href="https://stackpath.bootstrapcdn.com" />
-    #} {#
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-    #} {% block head_scripts %}{% endblock %} {# Block for scripts needed in the
-    head (use with caution) #}
-  </head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+    {# Favicon - add your favicon.ico to your static files #}
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
-    footer {
-      background-color: #2d2d2d;
-      color: white;
-      padding: 70px 0;
-    }
+    {# Stylesheets #}
+    {# Consider using a CSS framework like Bootstrap or Tailwind CSS, or write your own #}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"> {# Base styles for the whole site #}
+    {% block extra_css %}{% endblock %} {# Block for including extra CSS files from child templates #}
 
-    .footer-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px;
-    }
+    {# Preconnect to domains for external resources if you use CDNs #}
+    {# <link rel="preconnect" href="https://stackpath.bootstrapcdn.com"> #}
+    {# <link rel="preconnect" href="https://cdnjs.cloudflare.com"> #}
 
-    .footer-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
+    {% block head_scripts %}{% endblock %} {# Block for scripts needed in the head (use with caution) #}
+</head>
+ <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    .footer-section {
-      width: 23%;
-      min-width: 250px;
-      margin-bottom: 30px;
-    }
+        footer {
+            background-color: #2d2d2d;
+            color: white;
+            padding: 70px 0;
+        }
 
-    .footer-section h3 {
-      color: #fff;
-      font-size: 20px;
-      margin-bottom: 30px;
-      position: relative;
-    }
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
 
-    .footer-section h3::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -10px;
-      height: 2px;
-      width: 50px;
-      background-color: #f44336;
-    }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-    .footer-links {
-      list-style: none;
-    }
+        .footer-section {
+            width: 23%;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
 
-    .footer-links li {
-      margin-bottom: 10px;
-    }
+        .footer-section h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
 
-    .footer-links a {
-      color: #bdbdbd;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            height: 2px;
+            width: 50px;
+            background-color: #f44336;
+        }
 
-    .footer-links a:hover {
-      color: #f44336;
-      padding-left: 7px;
-    }
+        .footer-links {
+            list-style: none;
+        }
 
-    .contact-list {
-      list-style: none;
-    }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
 
-    .contact-list li {
-      margin-bottom: 15px;
-      color: #bdbdbd;
-      display: flex;
-      align-items: center;
-    }
+        .footer-links a {
+            color: #bdbdbd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
 
-    .contact-list i {
-      margin-right: 10px;
-      color: #f44336;
-      font-size: 20px;
-    }
+        .footer-links a:hover {
+            color: #f44336;
+            padding-left: 7px;
+        }
 
-    .social-links {
-      display: flex;
-      gap: 15px;
-    }
+        .contact-list {
+            list-style: none;
+        }
 
-    .social-links a {
-      color: white;
-      background-color: #3a3a3a;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+        .contact-list li {
+            margin-bottom: 15px;
+            color: #bdbdbd;
+            display: flex;
+            align-items: center;
+        }
 
-    .social-links a:hover {
-      background-color: #f44336;
-      transform: translateY(-3px);
-    }
+        .contact-list i {
+            margin-right: 10px;
+            color: #f44336;
+            font-size: 20px;
+        }
 
-    .footer-bottom {
-      background-color: #222;
-      padding: 20px 0;
-      text-align: center;
-      margin-top: 50px;
-    }
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
 
-    .footer-bottom p {
-      color: #bdbdbd;
-      font-size: 14px;
-    }
+        .social-links a {
+            color: white;
+            background-color: #3a3a3a;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
 
-    @media (max-width: 768px) {
-      .footer-section {
-        width: 100%;
-      }
+        .social-links a:hover {
+            background-color: #f44336;
+            transform: translateY(-3px);
+        }
 
-      .footer-content {
-        flex-direction: column;
-      }
-    }
-  </style>
-  <body>
+        .footer-bottom {
+            background-color: #222;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-bottom p {
+            color: #bdbdbd;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-section {
+                width: 100%;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+<body>
+
     {# Optional: Header section #}
-    <header>
-      <nav class="navbar">
+ <header>
+    <nav class="navbar">
         <div class="logo">
-          <a href="{% url 'homepage' %}">
-            <img src="{% static 'images/logo.png' %}" alt="Logo" />
-          </a>
+            <a href="{% url 'homepage' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo">
+            </a>
         </div>
         <ul class="nav-links">
-          <li><a href="{% url 'homepage' %}">Home</a></li>
-          <li class="dropdown">
-            <a href="#">Services</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Web Design</a></li>
-              <li><a href="#">SEO</a></li>
-              <li><a href="#">Marketing</a></li>
-            </ul>
-          </li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          {% if user.is_authenticated %}
-          <li><a href="{% url 'profile' %}">Profile</a></li>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Services</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">SEO</a></li>
+                    <li><a href="#">Marketing</a></li>
+                </ul>
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">Profile</a></li>
 
-          <li>
-            <form method="post" action="{% url 'logout' %}">
-              {% csrf_token %}
-              <button type="submit">Logout</button>
-            </form>
-          </li>
-          {% else %}
-          <li><a href="{% url 'login' %}">Login</a></li>
-          {% endif %}
+                <li>
+                    <form method="post" action="{% url 'logout' %}">
+  {% csrf_token %}
+  <button type="submit">Logout</button>
+</form></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
         </ul>
         <a href="#" class="cta-button">Get Started</a>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    {# Main content block - this is where the content of child templates will go
-    #}
+
+    {# Main content block - this is where the content of child templates will go #}
     <main id="content">
-      {% block content %} {# Default content or a placeholder #} {% endblock %}
+        {% block content %}
+            {# Default content or a placeholder #}
+        {% endblock %}
     </main>
 
     {# Optional: Footer section #}
     <footer>
-      <div class="footer-container">
-        <div class="footer-content">
-          <div class="footer-section">
-            <h3>About Us</h3>
-            <p class="text">
-              We are dedicated to providing the best services and solutions to
-              our customers.
-            </p>
-          </div>
-          <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-          <div class="footer-section">
-            <h3>Contact Info</h3>
-            <ul class="contact-list">
-              <li><i class="fas fa-phone"></i>+1 234 567 890</li>
-              <li><i class="fas fa-envelope"></i>info@example.com</li>
-              <li>
-                <i class="fas fa-map-marker-alt"></i>123 Street, New York, USA
-              </li>
-            </ul>
-          </div>
-          <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+       <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p class="text">We are dedicated to providing the best services and solutions to our customers.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-phone"></i>+1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i>info@example.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i>123 Street, New York, USA</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+            </div>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2023 Your Company Name. All rights reserved.</p>
-        </div>
-      </div>
     </footer>
 
-    {# JavaScript files #} {# Place scripts at the end of the body for better
-    performance (allows the HTML to load first) #}
-    <script src="{% static 'js/base.js' %}"></script>
-    {# Base JavaScript for the whole site #} {% block extra_js %}{% endblock %}
-    {# Block for including extra JS files from child templates #}
-  </body>
+    {# JavaScript files #}
+    {# Place scripts at the end of the body for better performance (allows the HTML to load first) #}
+    <script src="{% static 'js/base.js' %}"></script> {# Base JavaScript for the whole site #}
+    {% block extra_js %}{% endblock %} {# Block for including extra JS files from child templates #}
+
+</body>
 </html>
